@@ -2,9 +2,13 @@
 import StaggerTitle from '@/components/ui/animation'
 import { motion } from 'framer-motion'
 
-export default function Tag() {
+export interface TagProps {
+  activeSection?: string | null
+}
+
+export default function Tag({ activeSection }: TagProps) {
   return (
-    <div className='fixed bottom-0 left-0 mix-blend-difference text-a-white w-145 flex z-50'>
+    <div className='fixed  bottom-0 left-[max(0rem,calc((100vw-1680px)/2))] mix-blend-difference text-a-white min-w-145 flex z-50'>
       <div className='opacity-20 p-2 absolute left-0 bottom-0'>
         <svg
           width='602'
@@ -36,9 +40,12 @@ export default function Tag() {
           />
         </svg>
       </div>
-      <div className=' mx-auto z-10'>
-        <div className='tracking-[-0.05em] leading-[0.9] text-[128px] font-bold font-supreme'>
-          <StaggerTitle str='daeva' hasDot delay={1.5} />
+      <div className='mx-auto z-10'>
+        <div className='tracking-[-0.05em] relative leading-[0.9] text-[128px] font-bold font-supreme'>
+          <StaggerTitle
+            str={(activeSection === 'hero' ? '"daeva"' : activeSection || '"daeva"') + '•'}
+            delay={1.5}
+          />
         </div>
       </div>
     </div>

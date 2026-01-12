@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { cn } from '../lib/utils'
 import { fontMelodrama, fontPencerio, fontSupreme } from '../lib/fonts'
+import { LenisProvider } from '@/hooks/use-smooth-scroll'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,13 +18,13 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'antialiased',
+          'antialiased bg-a-black scroll-auto',
           fontMelodrama.variable,
           fontPencerio.variable,
           fontSupreme.variable
         )}
       >
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   )
