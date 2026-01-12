@@ -3,6 +3,7 @@ import './globals.css'
 import { cn } from '../lib/utils'
 import { fontMelodrama, fontPencerio, fontSupreme } from '../lib/fonts'
 import { LenisProvider } from '@/hooks/use-smooth-scroll'
+import Cursor from '@/components/ui/cursor'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,6 +26,7 @@ export default function RootLayout({
         )}
       >
         <LenisProvider>{children}</LenisProvider>
+        <Cursor />
       </body>
     </html>
   )

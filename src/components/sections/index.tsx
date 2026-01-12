@@ -18,7 +18,7 @@ const SectionWrapper = ({ className, asChild = false, ...props }: SectionWrapper
   return <Comp className={cn('', className)} {...props} />
 }
 
-export const sections = {
+export const SECTIONS = {
   hero: Hero,
   contact: Contact,
   craft: Craft,
@@ -26,17 +26,21 @@ export const sections = {
 
 const Sections = () => {
   const activeSection = useActiveSection(0.3)
-
+  const sections = Object.keys(SECTIONS) as Array<keyof typeof SECTIONS>
   return (
     <div className='relative'>
-      {(Object.keys(sections) as Array<keyof typeof sections>).map((name, key) => {
-        const Section = sections[name]
+      {sections.map((name, key) => {
+        const Section = SECTIONS[name]
         return (
           <SectionWrapper
             key={key}
             data-slot={`section-${name}`}
             id={name}
-            className={cn('min-h-screen', key % 2 === 0 && 'bg-a-black')}
+            className={cn(
+              'min-h-screen',
+              key % 2 === 0 && 'bg-a-black',
+              key === sections.length - 1 && 'rounded-b-3xl'
+            )}
           >
             <Section />
           </SectionWrapper>
